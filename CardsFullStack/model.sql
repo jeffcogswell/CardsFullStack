@@ -2,15 +2,15 @@
 
 use CardGame;
 
-create table Decks (
+create table Deck (
 	deck_id varchar(20),
     is_current boolean,
-    created_at datetime,
     username varchar(20),
+    created_at datetime,
     PRIMARY KEY (deck_id)
 );
 
-create table Cards (
+create table Card (
 	id int NOT NULL AUTO_INCREMENT,
     deck_id varchar(20),
     image varchar(200),
@@ -19,4 +19,3 @@ create table Cards (
     created_at datetime,
     PRIMARY KEY (id)
 );
-
