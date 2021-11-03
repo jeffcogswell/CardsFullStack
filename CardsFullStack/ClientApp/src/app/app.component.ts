@@ -47,6 +47,7 @@ export class AppComponent {
 		this.cardapi.getCards(deckid,
 			result => {
 				console.log(result);
+				this.deck_id = result[0].deck_id
 				this.theCards = result;
 			}
 		)
