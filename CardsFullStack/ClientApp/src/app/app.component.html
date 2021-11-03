@@ -1,6 +1,12 @@
 <body>
   <app-nav-menu></app-nav-menu>
   <div class="container">
-    <router-outlet></router-outlet>
+    <ng-container *ngIf="!currentUser">
+      Welcome! Please login: <input type="text" [(ngModel)]="loginEntry" /><button (click)="loginUser()">Login!</button>
+    </ng-container>
+    <ng-container *ngIf="currentUser">
+      Welcome {{ currentUser }}! <button (click)="logoutUser()">Logout</button>
+      <router-outlet></router-outlet>
+    </ng-container>
   </div>
 </body>
