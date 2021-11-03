@@ -12,6 +12,20 @@ namespace CardsFullStack.Controllers
 	[ApiController]
 	public class CardsController : ControllerBase
 	{
+
+		[HttpGet("deck")]
+		public async Task<IEnumerable<Card>> GetDeck()
+		{
+			return await DAL.InitializeDeck();
+		}
+
+		[HttpGet("cards/{id}")]
+		public async Task<IEnumerable<Card>> GetCards(string id)
+		{
+			return await DAL.DrawTwoCards(id);
+		}
+
+
 		[HttpGet("test")]
 		public async Task<IEnumerable<Card>> runtest()
 		{

@@ -52,26 +52,44 @@ namespace CardsFullStack.Models
 
 			// Step 3: Call the API to get two cards for that deck
 
-			response = await client.GetAsync($"https://deckofcardsapi.com/api/deck/{mydeck.deck_id}/draw/?count=2");
+			//response = await client.GetAsync($"https://deckofcardsapi.com/api/deck/{mydeck.deck_id}/draw/?count=2");
+			//DeckResponse deckresp2 = await response.Content.ReadAsAsync<DeckResponse>();
+
+			//// Step 4: Save those cards into the DB (we have a function that does that)
+
+			//foreach (CardResponse cardresp in deckresp2.cards)
+			//{
+			//	saveCard(mydeck.deck_id, cardresp.image, cardresp.code, "user100");
+			//}
+
+			//// Step 5: Return that list of Card instances (not a list of CardResponse instances)
+			//// We have a function for that!
+
+			//return getCardsForDeck(mydeck.deck_id);
+			return await DrawTwoCards(mydeck.deck_id);
+		}
+
+		// Get More Cards
+		// (Already wrote this in InitializeDeck function, so moved it here --jeffc)
+		public static async Task<IEnumerable<Card>> DrawTwoCards(string deck_id)
+		{
+			HttpClient client = new HttpClient();
+			client.BaseAddress = new Uri("https://deckofcardsapi.com");
+			var response = await client.GetAsync($"https://deckofcardsapi.com/api/deck/{deck_id}/draw/?count=2");
 			DeckResponse deckresp2 = await response.Content.ReadAsAsync<DeckResponse>();
 
 			// Step 4: Save those cards into the DB (we have a function that does that)
 
 			foreach (CardResponse cardresp in deckresp2.cards)
 			{
-				saveCard(mydeck.deck_id, cardresp.image, cardresp.code, "user100");
+				saveCard(deck_id, cardresp.image, cardresp.code, "user100");
 			}
 
 			// Step 5: Return that list of Card instances (not a list of CardResponse instances)
 			// We have a function for that!
 
-			return getCardsForDeck(mydeck.deck_id);
+			return getCardsForDeck(deck_id);
 		}
-
-		// Get More Cards
-		//    Draw two cards (from which deck? -- this will be a parameter)
-		//    Save those cards in our own DB
-		//    Return those cards
 
 		//=================================================
 		//
