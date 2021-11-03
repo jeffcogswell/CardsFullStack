@@ -13,7 +13,7 @@ namespace CardsFullStack.Models
 
 
 		// Add a new deck to the Deck table
-		public static saveDeck(Deck theDeck)
+		public static void saveDeck(Deck theDeck)
 		{
 
 		}
