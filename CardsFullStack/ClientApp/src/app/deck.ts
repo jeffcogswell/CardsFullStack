@@ -1,5 +1,5 @@
 export interface Deck {
-  deckId: String,
+  deck_id: String,
   username: String,
-  createdAt: Date
+  created_at: Date
 }

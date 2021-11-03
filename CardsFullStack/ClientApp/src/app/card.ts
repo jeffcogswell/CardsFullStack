@@ -1,8 +1,8 @@
 export interface Card {
   id: Number,
-  deckId: String,
+  deck_id: String,
   image: String,
-  cardCode: String,
+  cardcode: String,
   username: String,
-  createdAt: Date
+  created_at: Date
 }
