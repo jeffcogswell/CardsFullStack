@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Dapper.Contrib.Extensions;
 
 namespace CardsFullStack.Models
 {
+	[Table("Card")]
 	public class Card
 	{
+		[Key]
 		public int id { get; set; }
 		public string deck_id { get; set; }
 		public string image { get; set; }
