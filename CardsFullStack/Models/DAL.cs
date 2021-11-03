@@ -122,6 +122,11 @@ namespace CardsFullStack.Models
 			}
 		}
 
+		public static IEnumerable<Deck> getAllDecks()
+		{
+			return DB.GetAll<Deck>();
+		}
+
 		// Save a set of cards to the Card table for a particular deck
 		public static void saveCards(IEnumerable<Card> cards)
 		{

@@ -25,6 +25,11 @@ namespace CardsFullStack.Controllers
 			return await DAL.DrawTwoCards(id);
 		}
 
+		[HttpGet("decks")]
+		public IEnumerable<Deck> GetDecks()
+		{
+			return DAL.getAllDecks();
+		}
 
 		[HttpGet("test")]
 		public async Task<IEnumerable<Card>> runtest()

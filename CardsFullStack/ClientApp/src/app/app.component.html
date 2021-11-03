@@ -2,7 +2,13 @@
 	<app-nav-menu></app-nav-menu>
 	<div class="container">
 
-		<button (click)="getDeck()">Get Deck</button>
+		<div *ngIf="allDecks">
+			<ng-container *ngFor="let deck of allDecks">
+				<button (click)="selectDeck(deck.deck_id)">{{ deck.deck_id }}</button><br />
+			</ng-container>
+		</div>
+		<br />
+		<button (click)="getDeck()">Get New Deck</button>
 		<br />
 
 		{{ deck_id }}<br />
